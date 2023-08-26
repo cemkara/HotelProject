@@ -9,9 +9,9 @@ public class User{
     public DateTime LastLoginDate { get; set; }
     public DateTime RecordDate { get; set; }
 
-    public IList<UserPhoneNumber> UserPhoneNumbers { get; set; }
-    public IList<UserEmail> UserEmails { get; set; }
-    public IList<Restaurant> Restaurants { get; set; }
-    public IList<Hotel> Hotels { get; set; }
-    public IList<DriverAssignment> DriverAssignments { get; set; }
+    public ICollection<UserPhoneNumber> UserPhoneNumbers { get; set; }
+    public ICollection<UserEmail> UserEmails { get; set; }
+    public ICollection<Restaurant> Restaurants { get; set; }
+    public ICollection<Hotel> Hotels { get; set; }
+    public ICollection<DriverAssignment> DriverAssignments { get; set; }
 }

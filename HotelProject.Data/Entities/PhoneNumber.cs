@@ -4,7 +4,7 @@ public class PhoneNumber{
     public Status Status { get; set; }
     public DateTime RecordDate { get; set;} 
 
-    public IList<UserPhoneNumber> UserPhoneNumbers { get; set; }
-    public IList<HotelPhoneNumber> HotelPhoneNumbers { get; set; }
-    public IList<RestaurantPhoneNumber> RestaurantPhoneNumbers { get; set; }
+    public ICollection<UserPhoneNumber> UserPhoneNumbers { get; set; }
+    public ICollection<HotelPhoneNumber> HotelPhoneNumbers { get; set; }
+    public ICollection<RestaurantPhoneNumber> RestaurantPhoneNumbers { get; set; }
 }

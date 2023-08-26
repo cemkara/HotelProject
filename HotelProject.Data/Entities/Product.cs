@@ -9,6 +9,6 @@ public class Product{
     public ProductCategory ProductCategory {get; set;}
     public DateTime RecordDate {get;set;}
 
-    public IList<RestaurantProduct> RestaurantProducts { get; set; }
-    public IList<HotelMenuProduct> HotelMenuProducts { get; set; }
+    public ICollection<RestaurantProduct> RestaurantProducts { get; set; }
+    public ICollection<HotelMenuProduct> HotelMenuProducts { get; set; }
 }

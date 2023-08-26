@@ -9,10 +9,10 @@ public class Restaurant
     public RestaurantType RestaurantType { get; set; }
     public DateTime RecordDate { get; set; }
 
-    public IList<RestaurantPhoneNumber> RestaurantPhoneNumbers { get; set; }
-    public IList<RestaurantEmail> RestaurantEmails { get; set; }
-    public IList<RestaurantProduct> RestaurantProducts { get; set; }
-    public IList<HotelRestaurant> HotelRestaurants { get; set; }
-    public IList<RestaurantCommission> RestaurantCommissions { get; set; }
-    public IList<User> Users { get; set; }
+    public ICollection<RestaurantPhoneNumber> RestaurantPhoneNumbers { get; set; }
+    public ICollection<RestaurantEmail> RestaurantEmails { get; set; }
+    public ICollection<RestaurantProduct> RestaurantProducts { get; set; }
+    public ICollection<HotelRestaurant> HotelRestaurants { get; set; }
+    public ICollection<RestaurantCommission> RestaurantCommissions { get; set; }
+    public ICollection<User> Users { get; set; }
 }

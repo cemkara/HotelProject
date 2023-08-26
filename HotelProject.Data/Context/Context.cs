@@ -55,11 +55,69 @@ namespace HotelProject.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            //modelBuilder.Entity<Hotel>()
-            //    .HasOne(o => o.ResponsibleUser)
-            //    .WithMany()
-            //    .HasForeignKey(o => o.Users)
-            //    .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<AdminCommissionEarning>()
+                .Property(e => e.CommissionRate)
+                .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<AdminCommissionEarning>()
+                .Property(e => e.EarnedAmount)
+                .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<HotelCommission>()
+                .Property(e => e.CommissionRate)
+                .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<HotelCommissionEarning>()
+                .Property(e => e.CommissionRate)
+                .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<HotelCommissionEarning>()
+                .Property(e => e.EarnedAmount)
+                .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<DiscountCoupon>()
+                .Property(e => e.DiscountAmount)
+                .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<DiscountCoupon>()
+                .Property(e => e.MinAmount)
+                .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<Transfer>()
+                .Property(e => e.TransferPrice)
+                .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<HotelMenuProduct>()
+                .Property(e => e.DiscountRate)
+                .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<HotelMenuProduct>()
+                .Property(e => e.Price)
+                .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<Order>()
+                .Property(e => e.OrderTotalPrice)
+                .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<OrderDetail>()
+                .Property(e => e.UnitPrice)
+                .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<Payment>()
+                .Property(e => e.TotalPayment)
+                .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<Rating>()
+                .Property(e => e.Rate)
+                .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<Restaurant>()
+                .Property(e => e.MinAmount)
+                .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<RestaurantCommission>()
+                .Property(e => e.CommissionRate)
+                .HasColumnType("decimal(18, 2)");
 
         }
     }

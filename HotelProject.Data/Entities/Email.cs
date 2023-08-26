@@ -4,7 +4,7 @@ public class Email{
     public Status Status { get; set; }
     public DateTime RecordDate { get; set;} 
 
-    public IList<UserEmail> UserEmails { get; set; }
-    public IList<HotelEmail> HotelEmails { get; set; }
-    public IList<RestaurantEmail> RestaurantEmails { get; set; }
+    public ICollection<UserEmail> UserEmails { get; set; }
+    public ICollection<HotelEmail> HotelEmails { get; set; }
+    public ICollection<RestaurantEmail> RestaurantEmails { get; set; }
 }

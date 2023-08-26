@@ -5,5 +5,5 @@ public class ProductCategory{
     public int OrderNumber {get; set;}
     public string ImageUrl {get; set;}
 
-    public IList<Product> Products { get; set; }
+    public ICollection<Product> Products { get; set; }
 }

@@ -1,6 +1,5 @@
-public enum EventType
+public class EventType
 {
-    NewOrder,
-    HotelLogin,
-    RestaurantLogin
+    public int EventTypeId { get; set; }
+    public string Name { get; set; }
 }

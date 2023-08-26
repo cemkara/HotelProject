@@ -1,4 +1,4 @@
-public class Email(){
+public class Email{
     public int EmailId { get; set; }
     public string Mail { get; set; }
     public Status Status { get; set; }

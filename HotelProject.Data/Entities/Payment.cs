@@ -1,4 +1,4 @@
-public class Payment(){
+public class Payment{
     public int PaymentId { get; set;}
     public Order Order {get; set;}
     public decimal TotalPayment { get; set; }

@@ -1,7 +1,5 @@
-public enum OrderStatus{
-    YourOrderHasBeenTaken = 1,
-    PreparationStarted = 2,
-    OnTheWay = 3,
-    Delivered = 4,
-    ItIsCancelled = 5
+public class OrderStatus
+{
+    public int OrderStatusId { get; set; }
+    public string Name { get; set; }
 }

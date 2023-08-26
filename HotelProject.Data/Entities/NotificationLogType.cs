@@ -1,5 +1,5 @@
-public enum NotificationLogType{
-    Email = 1,
-    SMS = 2,
-    MobileApp = 3
+public class NotificationLogType
+{
+    public int NotificationLogTypeId { get; set; }
+    public string Name { get; set; }
 }

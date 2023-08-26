@@ -1,8 +1,7 @@
-public enum Rating{
-    0,
-    1,
-    2,
-    3,
-    4,
-    5
+public class Rating
+{
+    public int RatingId { get; set; }
+    public string Name { get; set; }
+    public decimal Rate { get; set; }
+
 }

@@ -1,4 +1,4 @@
-public class User(){
+public class User{
     public int UserId { get; set; }
     public string Name { get; set; }
     public string Username { get; set; }
@@ -6,8 +6,8 @@ public class User(){
     public string Password { get; set; }
     public Status Status {get; set;}
     public UserType UserType {get; set;}
-    public Datetime LastLoginDate { get; set; }
-    public Datetime RecordDate { get; set; }
+    public DateTime LastLoginDate { get; set; }
+    public DateTime RecordDate { get; set; }
 
     public IList<UserPhoneNumber> UserPhoneNumbers { get; set; }
     public IList<UserEmail> UserEmails { get; set; }

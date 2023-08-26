@@ -1,5 +1,5 @@
-public PaymentMethod{
-    CreditCard = 1,
-    Cash = 2,
-    FoodCard = 3
+public class PaymentMethod
+{
+    public int PaymentMethodId { get; set; }
+    public string Name { get; set; }
 }

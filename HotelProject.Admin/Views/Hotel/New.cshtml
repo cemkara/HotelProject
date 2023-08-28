@@ -1,8 +1,31 @@
-﻿
+﻿@model HotelProject.Data.Entities.Hotel
 @{
     ViewData["Title"] = "New";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>New Hotel</h1>
-
+<p>address alanına il ilçe girilecek şekilde düzenlenecek. status alanı. logo için dosya yüklenecek.</p>
+<form asp-action="New">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address"></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Status"></label>
+        <input asp-for="Status" class="form-control" />
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LogoUrl"></label>
+        <input asp-for="LogoUrl" class="form-control" />
+        <span asp-validation-for="LogoUrl" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>

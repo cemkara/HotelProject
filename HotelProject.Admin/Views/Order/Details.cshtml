@@ -3,5 +3,116 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Order Details</h1>
+<div class="row mt-3">
+    <div class="col-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <img src="../assets/img/icons/unicons/chart-success.png"
+                             alt="chart success"
+                             class="rounded" />
+                    </div>
+                </div>
+                <span class="fw-semibold d-block mb-1">Total Price: ₺4.580</span>
+                @*<h3 class="card-title mb-2"></h3>*@
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <img src="../assets/img/icons/unicons/chart.png"
+                             alt="chart success"
+                             class="rounded" />
+                    </div>
+                </div>
+                <span class="fw-semibold d-block mb-1"><span class="badge bg-label-info me-1">Preparing</span></span>
+                @*<h3 class="card-title mb-2"></h3>*@
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <img src="../assets/img/icons/unicons/chart-success.png"
+                             alt="chart success"
+                             class="rounded" />
+                    </div>
+                </div>
+                <span class="fw-semibold d-block mb-1">Dedeman Hotel</span>
+                <h3 class="card-title mb-2"> </h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <img src="../assets/img/icons/unicons/wallet.png"
+                             alt="chart success"
+                             class="rounded" />
+                    </div>
+                </div>
+                <span class="fw-semibold d-block mb-1">
+                    <a href="#" class="btn btn-sm rounded-pill btn-outline-danger" type="button">Order Cancel</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card mt-3">
+    <h3 class="card-header">Order Details</h3>
+    <div class="table-responsive text-nowrap">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="col-1">Product</th>
+                    <th class="col-1">Restaurant</th>
+                    <th class="col-1">Quantity</th>
+                    <th class="col-1">Price</th>
+                    <th class="col-1">Total Price</th>
+                    <th class="col-1">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                <tr>
+                    <td>Adana Kebap</td>
+                    <td>Nusret</td>
+                    <td><strong>2</strong></td>
+                    <td>₺500</td>
+                    <td>₺1000</td>
+                    <td>
+                        <a href="#" type="button" class="btn btn-sm rounded-pill btn-outline-danger">Cancel</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Döner</td>
+                    <td>Nusret</td>
+                    <td><strong>1</strong></td>
+                    <td>₺300</td>
+                    <td>₺300</td>
+                    <td>
+                        <a href="#" type="button" class="btn btn-sm rounded-pill btn-outline-danger">Cancel</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Steak</td>
+                    <td>Nusret</td>
+                    <td><strong>3</strong></td>
+                    <td>₺700</td>
+                    <td>₺2100</td>
+                    <td>
+                        <a href="#" type="button" class="btn btn-sm rounded-pill btn-outline-danger">Cancel</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 

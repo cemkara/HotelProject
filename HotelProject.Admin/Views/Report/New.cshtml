@@ -1,8 +1,57 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "New";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="row">
+    <div class="col-xl">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">New Report</h5>
+                @*<small class="text-muted float-end">Default label</small>*@
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">Report Name</label>
+                        <input type="text" class="form-control" id="basic-default-fullname" placeholder="Report Name" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-company">Report Type</label>
+                        <select class="form-select form-control">
+                            <option selected>Report Type</option>
+                            <option value="1">Hotel Commission Report</option>
+                            <option value="2">Restaurant Commission Report</option>
+                            <option value="3">Hotel Transfer Report</option>
+                            <option value="4">Admin Commission Report</option>
+                            <option value="5">Total Order Report</option>
+                            <option value="5">Hotel Orders Report</option>
+                            <option value="5">Restaurant Orders Report</option>
+                        </select>
+                    </div>
 
-<h1>New Report</h1>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-company">Report Duration</label>
+                        <select class="form-select form-control">
+                            <option selected>Report Duration</option>
+                            <option value="1">Daily</option>
+                            <option value="2">Weekly</option>
+                            <option value="3">Monthly</option>
+                            <option value="4">Yearly</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
 
+                        <label class="form-label" for="basic-default-company">Start Date</label>
+                        <input class="form-control" type="date" value="2023-08-20" id="html5-date-input">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-company">End Date</label>
+                        <input class="form-control" type="date" value="2023-08-30" id="html5-date-input">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,8 +1,67 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Update";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Update User</h1>
+<div class="row">
+    <div class="col-xl">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">New Hotel</h5>
+                @*<small class="text-muted float-end">Default label</small>*@
+                <div class="form-check form-switch mb-2 float-end">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked />
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Is Active?</label>
+                </div>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">Name</label>
+                        <input type="text" class="form-control" id="basic-default-fullname" value="Cem" placeholder="Name" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-company">Type</label>
+                        <select class="form-select form-control">
+                            <option>Select Type</option>
+                            <option selected value="1">Admin</option>
+                            <option value="2">Hotel User</option>
+                            <option value="3">Restourant User</option>
+                            <option value="3">Delivery Driver</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">Username</label>
+                        <input type="text" class="form-control" id="basic-default-fullname" value="cemkara" placeholder="Username" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">Password</label>
+                        <input type="password" class="form-control" id="basic-default-fullname" value="123456789" placeholder="Password" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-email">Email</label>
+                        <div class="input-group input-group-merge">
+                            <input type="text"
+                                   id="basic-default-email"
+                                   class="form-control"
+                                   placeholder="info@Hotel.com"
+                                   aria-label="info@Hotel.com"
+                                   value="cemkara1992@gmail.com" />
+                        </div>
+                        <div class="form-text">You can use letters, numbers & periods</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-phone">Phone No</label>
+                        <input type="text"
+                               id="basic-default-phone"
+                               class="form-control phone-mask"
+                               placeholder="658 799 8941"
+                               phone="0212 123 45 67" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 

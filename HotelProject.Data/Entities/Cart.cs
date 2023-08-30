@@ -9,7 +9,7 @@ public class Cart
                 decimal totalPrice = 0;
                 foreach (var item in CartItems)
                 {
-                    totalPrice += item.Product.Price * item.Quantity;
+                    totalPrice += (decimal)item.Product.Price * item.Quantity;
                 }
                 return totalPrice;
             }

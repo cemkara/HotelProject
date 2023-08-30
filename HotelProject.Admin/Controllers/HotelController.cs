@@ -43,5 +43,28 @@ namespace HotelProject.Admin.Controllers
         {
             return View();
         }
+        public IActionResult NewMenu(int id)
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult NewMenu(HotelMenu menu)
+        {
+            return View();
+        }
+        public IActionResult UpdateMenu(int id)
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult UpdateMenu(HotelMenu menu)
+        {
+            return View();
+        }
+        public IActionResult MenuProducts(int id)
+        {
+            return View();
+        }
+
     }
 }

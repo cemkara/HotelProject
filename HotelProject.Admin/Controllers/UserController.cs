@@ -39,5 +39,9 @@ namespace HotelProject.Admin.Controllers
         {
             return View();
         }
+        public IActionResult Profile()
+        {
+            return View();
+        }
     }
 }

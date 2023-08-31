@@ -1,0 +1,112 @@
+﻿@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row mt-3">
+    <div class="col-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <img src="../assets/img/icons/unicons/chart-success.png"
+                             alt="chart success"
+                             class="rounded" />
+                    </div>
+                </div>
+                <span class="fw-semibold d-block mb-1">Total Price: ₺580</span>
+                @*<h3 class="card-title mb-2"></h3>*@
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <img src="../assets/img/icons/unicons/chart.png"
+                             alt="chart success"
+                             class="rounded" />
+                    </div>
+                </div>
+                <span class="fw-semibold d-block mb-1"><span class="badge bg-label-info me-1">Preparing</span></span>
+                @*<h3 class="card-title mb-2"></h3>*@
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <img src="../assets/img/icons/unicons/chart-success.png"
+                             alt="chart success"
+                             class="rounded" />
+                    </div>
+                </div>
+                <span class="fw-semibold d-block mb-1">Dedeman Hotel</span>
+                <h3 class="card-title mb-2"> </h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <img src="../assets/img/icons/unicons/wallet.png"
+                             alt="chart success"
+                             class="rounded" />
+                    </div>
+                </div>
+                <span class="fw-semibold d-block mb-1">
+                    <a href="#" class="btn btn-sm rounded-pill btn-outline-danger" type="button">Transfer Cancel</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-xl">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Transfer Update</h5>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-company">Hotel</label>
+                        <select class="form-select form-control">
+                            <option>Select Type</option>
+                            <option selected value="1">Istanbul Dedeman</option>
+                            <option value="2">Point Hotel</option>
+                            <option value="3">Divan Hotel</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">Transfer Company</label>
+                        <input type="text" class="form-control" id="basic-default-fullname" value="ABC Airport Transfer" placeholder="ABC Airport Transfer" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-email">Price (₺)</label>
+                        <div class="input-group input-group-merge">
+                            <input class="form-control" type="number" value="500" id="html5-number-input">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-company">Payment</label>
+                        <select class="form-select form-control">
+                            <option>Select Type</option>
+                            <option selected value="1">Complated</option>
+                            <option value="2">Wait</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

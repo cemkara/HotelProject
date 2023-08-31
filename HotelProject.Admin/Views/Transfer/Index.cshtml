@@ -1,19 +1,10 @@
 ﻿@{
-    ViewData["Title"] = "Products";
+    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="card mb-3">
-    <h4 class="card-header">Nusret Steak House</h4>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-md-8">
-                <a href="/Restaurant/NewProduct/5" type="button" class="btn btn-outline-primary">New Product</a>
-            </div>
-        </div>
-    </div>
-</div>
+
 <div class="card">
-    <h3 class="card-header">Restaurant Products</h3>
+    <h3 class="card-header">Transfer</h3>
     <div class="row">
         <div class="col-md-8">
             <input type="text" class="form-control" placeholder="Search for text..." />
@@ -24,8 +15,10 @@
         <div class="col-md-2 mb-3 justify-content-end">
             <select class="form-select" aria-label="Status">
                 <option selected>All Status</option>
-                <option value="1">Active</option>
-                <option value="2">Passive</option>
+                <option value="1">Preparing</option>
+                <option value="2">On The Way</option>
+                <option value="3">Complated</option>
+                <option value="4">Cancel</option>
             </select>
         </div>
     </div>
@@ -33,42 +26,49 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th class="col-4">Name</th>
-                    <th class="col-3">Price</th>
-                    <th class="col-2">Status</th>
-                    <th class="col-3">Actions</th>
+                    <th class="col-1">Room</th>
+                    <th class="col-4">Hotel</th>
+                    <th class="col-3">Company</th>
+                    <th class="col-1">Date</th>
+                    <th class="col-1">Status</th>
+                    <th class="col-1">Price</th>
+                    <th class="col-1">Actions</th>
                 </tr>
             </thead>
             <tbody class="table-border-bottom-0">
                 <tr>
-                    <td><strong>Döner</strong></td>
-                    <td>₺120</td>
-                    <td><span class="badge bg-label-success me-1">Active</span></td>
+                    <td>3004</td>
+                    <td><strong>Istanbul Dedeman Hotel</strong></td>
+                    <td>Airport Transfer AŞ</td>
+                    <td>2023/08/30 10:00</td>
+                    <td><span class="badge bg-label-info me-1">Preparing</span></td>
+                    <td>₺250.25</td>
                     <td>
-                        <a href="/Restaurant/ProductUpdate" type="button" class="btn btn-sm rounded-pill btn-outline-primary">Update</a>
-                        <a href="#" type="button" class="btn btn-sm rounded-pill btn-outline-danger">Remove</a>
+                        <a href="/Transfer/Details" type="button" class="btn btn-sm rounded-pill btn-outline-primary">Details</a>
                     </td>
                 </tr>
                 <tr>
-                    <td><strong>Steak</strong></td>
-                    <td>₺500</td>
-                    <td><span class="badge bg-label-success me-1">Active</span></td>
+                    <td>7885</td>
+                    <td><strong>Point Hotel</strong></td>
+                    <td>Airport Transfer AŞ</td>
+                    <td>2023/08/30 10:00</td>
+                    <td><span class="badge bg-label-info me-1">Preparing</span></td>
+                    <td>₺250.25</td>
                     <td>
-                        <a href="/Restaurant/ProductUpdate" type="button" class="btn btn-sm rounded-pill btn-outline-primary">Update</a>
-                        <a href="#" type="button" class="btn btn-sm rounded-pill btn-outline-danger">Remove</a>
+                        <a href="/Transfer/Details" type="button" class="btn btn-sm rounded-pill btn-outline-primary">Details</a>
                     </td>
                 </tr>
                 <tr>
-                    <td><strong>cappuccino</strong></td>
-                    <td>₺150</td>
-                    <td><span class="badge bg-label-success me-1">Active</span></td>
+                    <td>508</td>
+                    <td><strong>The Wall Hotel</strong></td>
+                    <td>ABC Transfer AŞ</td>
+                    <td>2023/08/30 10:00</td>
+                    <td><span class="badge bg-label-success me-1">Complated</span></td>
+                    <td>₺500.25</td>
                     <td>
-                        <a href="/Restaurant/ProductUpdate" type="button" class="btn btn-sm rounded-pill btn-outline-primary">Update</a>
-                        <a href="#" type="button" class="btn btn-sm rounded-pill btn-outline-danger">Remove</a>
+                        <a href="/Transfer/Details" type="button" class="btn btn-sm rounded-pill btn-outline-primary">Details</a>
                     </td>
                 </tr>
-
-
             </tbody>
         </table>
     </div>

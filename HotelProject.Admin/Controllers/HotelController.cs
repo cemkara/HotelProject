@@ -65,6 +65,15 @@ namespace HotelProject.Admin.Controllers
         {
             return View();
         }
+        public IActionResult NewRestaurant(int id)
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult NewRestaurant(Restaurant restaurant)
+        {
+            return View();
+        }
 
     }
 }

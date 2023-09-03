@@ -9,6 +9,7 @@ import { ShopDetailsComponent } from './components/shop-details/shop-details.com
 import { CartComponent } from './components/cart/cart.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
+import { SliderComponent } from './components/slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +19,12 @@ import { FooterComponent } from './components/shared/footer/footer.component';
     ShopDetailsComponent,
     CartComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

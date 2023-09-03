@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap');
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background:#eee;
+}
+
+.size span {
+  font-size: 11px;
+}
+
+.color span {
+  font-size: 11px;
+}
+
+.product-deta {
+  margin-right: 70px;
+}
+
+.gift-card:focus {
+  box-shadow: none;
+}
+
+.pay-button {
+  color: #fff;
+}
+
+.pay-button:hover {
+  color: #fff;
+}
+
+.pay-button:focus {
+  color: #fff;
+  box-shadow: none;
+}
+
+.text-grey {
+  color: #a39f9f;
+}
+
+.qty i {
+  font-size: 11px;
+}body{
+    background-color: #eeeeee;
+}
+
+.footer-background{
+    background-color: rgb(204, 199, 199);
+}
+
+@media(max-width:991px){
+    #heading{
+        padding-left: 50px;
+    }
+    #prc{
+        margin-left: 70px;
+        padding-left: 110px;
+    }
+    #quantity{
+        padding-left: 48px;
+    }
+    #produc{
+        padding-left: 40px;
+    }
+    #total{
+        padding-left: 54px;
+    }
+}
+@media(max-width:767px){
+    .mobile{
+        font-size: 12px;
+        width: 95%;
+    }
+    h5{
+        font-size: 14px;
+    }
+    h6{
+        font-size: 9px;
+    }
+    #mobile-font{
+        font-size: 11px;
+    }
+    #prc{
+        font-weight: 700;
+        margin-left: -45px;
+        padding-left: 105px;
+    }
+    #quantity{
+        font-weight: 700;
+        padding-left: 6px;
+    }
+    #produc{
+        font-weight: 700;
+        padding-left: 0px;
+    }
+    #total{
+        font-weight: 700;
+        padding-left: 9px;
+    }
+    #image{
+        width: 60px;
+        height: 60px;
+    }
+    .col{
+        width: 100%;
+    }
+    #zero-pad{
+        padding: 2%;
+        margin-left: 10px;
+    }
+    #footer-font{
+        font-size: 12px;
+    }
+    #heading{
+        padding-top: 15px;
+    }
+}
+.cart-product-text{
+    font-size: 13px;
+}
+.product-title{
+    width: 50%;
+}

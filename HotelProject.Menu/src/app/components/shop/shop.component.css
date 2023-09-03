@@ -1,31 +1,15 @@
-.card {
-    flex-direction: row;
-    padding: 0px 0px;
-}
-
-.card-body {
-    padding: 5px 0px;
-}
-
-.card-img {
-    /* padding: 0px 10px 0px 0px; */
-    align-items: center;
-    width: 120px;
-    height: 120px;
-    margin-right: 10px;
-
-
-}
-
-.card img {
-    /* width: 120px; */
-}
-
-.card-title {
-    font-weight: bold;
-}
-
 .addCartButton {
     float: right;
-    margin-right: 5%;
+    /* margin-right: 5%; */
+}
+
+.card-block{
+    width: 60%;
+}
+
+a:link {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
 }

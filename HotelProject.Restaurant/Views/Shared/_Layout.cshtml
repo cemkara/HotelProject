@@ -106,19 +106,19 @@
 
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
-                    <li class="menu-item active">
+                    <li class="menu-item @((ViewContext.RouteData.Values["controller"] as string == "Home") ? "active" : "")">
                         <a href="/" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div>Dashboard</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item @((ViewContext.RouteData.Values["controller"] as string == "Order") ? "active" : "")">
                         <a href="/Order" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-layout"></i>
                             <div>Orders</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item @((ViewContext.RouteData.Values["controller"] as string == "Product") ? "active" : "")">
                         <a href="/Product" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-layout"></i>
                             <div>Products</div>

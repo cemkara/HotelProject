@@ -106,43 +106,43 @@
 
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
-                    <li class="menu-item active">
+                    <li class="menu-item @((ViewContext.RouteData.Values["controller"] as string == "Home") ? "active" : "")">
                         <a href="/" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div>Dashboard</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item @((ViewContext.RouteData.Values["controller"] as string == "Order") ? "active" : "")">
                         <a href="/Order" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-layout"></i>
                             <div>Orders</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item @((ViewContext.RouteData.Values["controller"] as string == "Transfer") ? "active" : "")">
                         <a href="/Transfer" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-layout"></i>
                             <div>Transfers</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item @((ViewContext.RouteData.Values["controller"] as string == "Hotel") ? "active" : "")">
                         <a href="/Hotel" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-layout"></i>
                             <div>Hotels</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item @((ViewContext.RouteData.Values["controller"] as string == "Restaurant") ? "active" : "")">
                         <a href="/Restaurant" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-layout"></i>
                             <div>Restaurants</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item @((ViewContext.RouteData.Values["controller"] as string == "User") ? "active" : "")">
                         <a href="/User" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-layout"></i>
                             <div>Users</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item @((ViewContext.RouteData.Values["controller"] as string == "Report") ? "active" : "")">
                         <a href="/Report" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-layout"></i>
                             <div>Reports</div>
@@ -154,7 +154,7 @@
                             <div>New</div>
                         </a>
 
-                        <ul class="menu-sub">
+                        <ul class="menu-sub ">
                             <li class="menu-item">
                                 <a href="/Hotel/New" class="menu-link"><div data-i18n="Without menu">Hotel</div></a>
                             </li>

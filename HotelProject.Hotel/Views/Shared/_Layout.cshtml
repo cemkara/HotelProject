@@ -106,31 +106,31 @@
 
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
-                    <li class="menu-item active">
+                     <li class="menu-item @((ViewContext.RouteData.Values["controller"] as string == "Home") ? "active" : "")">
                         <a href="/" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div>Dashboard</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item @((ViewContext.RouteData.Values["controller"] as string == "Order") ? "active" : "")">
                         <a href="/Order" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-layout"></i>
                             <div>Orders</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item @((ViewContext.RouteData.Values["controller"] as string == "Transfer") ? "active" : "")">
                         <a href="/Transfer" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-layout"></i>
                             <div>Transfers</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                     <li class="menu-item @((ViewContext.RouteData.Values["controller"] as string == "Restaurant") ? "active" : "")">
                         <a href="/Restaurant" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-layout"></i>
                             <div>Restaurants</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                     <li class="menu-item @((ViewContext.RouteData.Values["controller"] as string == "Menu") ? "active" : "")">
                         <a href="/Menu" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-layout"></i>
                             <div>Menu</div>

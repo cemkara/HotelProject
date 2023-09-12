@@ -13,7 +13,7 @@ namespace HotelProject.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult New(User user)
+        public IActionResult New(MyUser user)
         {
             return View();
         }
@@ -26,7 +26,7 @@ namespace HotelProject.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Update(User user)
+        public IActionResult Update(MyUser user)
         {
             return View();
         }

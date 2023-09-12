@@ -14,5 +14,5 @@ public class Hotel{
     public ICollection<HotelCommission> HotelCommissions { get; set; }
     public ICollection<HotelCommissionEarning> HotelCommissionEarnings{get; set;}
     public ICollection<Transfer> Transfers { get; set; }
-    public ICollection<User> Users { get; set; }
+    public ICollection<MyUser> Users { get; set; }
 }

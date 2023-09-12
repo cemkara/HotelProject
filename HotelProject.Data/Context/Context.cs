@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HotelProject.Data
 {
-    public class Context : DbContext
+    public class Context : IdentityDbContext<MyUser, MyRole, int>
     {
         public DbSet<Address> Addresses { get; set; }
         public DbSet<AdminCommissionEarning> AdminCommissionEarnings { get; set; }
@@ -39,16 +40,18 @@ namespace HotelProject.Data
         public DbSet<RestaurantProduct> RestaurantProducts { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Transfer> Transfers { get; set; }
-        public DbSet<User> Users { get; set; }
         public DbSet<UserEmail> UserEmails { get; set; }
         public DbSet<UserPhoneNumber> UserPhoneNumbers { get; set; }
+        public DbSet<Status> Statuses { get; set; }
+        public DbSet<UserType> UserTypes { get; set; }
+
 
 
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=.;database=HotelProject;trusted_connection=true;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("server=.;database=HotelRestaurantProject;trusted_connection=true;TrustServerCertificate=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

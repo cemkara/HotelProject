@@ -5,7 +5,7 @@
 namespace HotelProject.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class Mig_CreateNotWarningMigration : Migration
+    public partial class identity_config : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -14,5 +14,5 @@ public class Restaurant
     public ICollection<RestaurantProduct> RestaurantProducts { get; set; }
     public ICollection<HotelRestaurant> HotelRestaurants { get; set; }
     public ICollection<RestaurantCommission> RestaurantCommissions { get; set; }
-    public ICollection<User> Users { get; set; }
+    public ICollection<MyUser> Users { get; set; }
 }

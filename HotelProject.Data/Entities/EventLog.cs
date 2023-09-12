@@ -6,6 +6,6 @@ public class EventLog
     public DateTime LogDate { get; set; }
     
     public Hotel? Hotel { get; set; }
-    public User? User { get; set; }
+    public MyUser? User { get; set; }
     public Restaurant? Restaurant { get; set; }
 }

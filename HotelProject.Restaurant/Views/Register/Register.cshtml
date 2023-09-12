@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_authLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("Register", "Register", FormMethod.Post))
+{
+    <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+}

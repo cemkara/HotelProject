@@ -1,4 +1,5 @@
-﻿@{
+﻿@model UserLoginViewModel
+@{
     ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/_authLayout.cshtml";
 }
@@ -59,29 +60,21 @@
                         </a>
                     </div>
                     <!-- /Logo -->
-                    <h4 class="mb-2">Welcome to hotels! 👋</h4>
+                    <h4 class="mb-2">Welcome to hotels!</h4>
                     <p class="mb-4">Please sign-in to your account and start the adventure</p>
+                    @using (Html.BeginForm("Login", "Auth", FormMethod.Post))
+                    {
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger font-weight-bold"} )
 
-                    <form id="formAuthentication" class="mb-3" action="/Home/Index" method="POST">
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email or Username</label>
-                            <input type="text"
-                                   class="form-control"
-                                   id="email"
-                                   name="email-username"
-                                   placeholder="Enter your email or username"
-                                   autofocus />
+                            <label for="username" class="form-label">Email</label>
+                            @Html.TextBoxFor(x=>x.Username,new {@class="form-control", placeHolder = "Email"})
+                            @Html.ValidationMessageFor(x=>x.Username,"",new{@class = "text-danger font-weight-bold"})
                         </div>
                         <div class="mb-3 form-password-toggle">
-                            <div class="input-group input-group-merge">
-                                <input type="password"
-                                       id="password"
-                                       class="form-control"
-                                       name="password"
-                                       placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                       aria-describedby="password" />
-                                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                            </div>
+                            @Html.TextBoxFor(x=>x.Password,new {@class="form-control", placeHolder = "Password"})
+                            @Html.ValidationMessageFor(x=>x.Password,"",new{@class = "text-danger font-weight-bold"})
+
                         </div>
                         <div class="mb-3">
                             <div class="form-check">
@@ -92,7 +85,8 @@
                         <div class="mb-3">
                             <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
                         </div>
-                    </form>
+
+                    }
 
                     <p class="text-center">
                         <span>If you are having trouble logging in, please contact the administrator.</span>

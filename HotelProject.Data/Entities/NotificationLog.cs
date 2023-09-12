@@ -5,7 +5,7 @@ public class NotificationLog
     public string Message { get; set; }
     public DateTime SentDate { get; set; }
 
-    public User User { get; set; }
+    public MyUser User { get; set; }
     public Hotel? Hotel { get; set; }
     public Restaurant? Restaurant { get; set; }
 }

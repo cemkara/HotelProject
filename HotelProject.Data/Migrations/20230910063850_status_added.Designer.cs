@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelProject.Data.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230826080014_Mig_CreateNotWarningMigration")]
-    partial class Mig_CreateNotWarningMigration
+    [Migration("20230910063850_status_added")]
+    partial class status_added
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -175,7 +175,7 @@ namespace HotelProject.Data.Migrations
                     b.Property<DateTime>("AssignmentDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("DeliveryUserUserId")
+                    b.Property<int?>("DeliveryUserId")
                         .HasColumnType("int");
 
                     b.Property<int?>("OrderId")
@@ -183,7 +183,7 @@ namespace HotelProject.Data.Migrations
 
                     b.HasKey("DriverAssignmentId");
 
-                    b.HasIndex("DeliveryUserUserId");
+                    b.HasIndex("DeliveryUserId");
 
                     b.HasIndex("OrderId");
 
@@ -432,6 +432,21 @@ namespace HotelProject.Data.Migrations
                     b.ToTable("HotelMenuProducts");
                 });
 
+            modelBuilder.Entity("HotelMyUser", b =>
+                {
+                    b.Property<int>("HotelsHotelId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsersId")
+                        .HasColumnType("int");
+
+                    b.HasKey("HotelsHotelId", "UsersId");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("HotelMyUser");
+                });
+
             modelBuilder.Entity("HotelPhoneNumber", b =>
                 {
                     b.Property<int>("HotelPhoneNumberId")
@@ -499,19 +514,242 @@ namespace HotelProject.Data.Migrations
                     b.ToTable("HotelRooms");
                 });
 
-            modelBuilder.Entity("HotelUser", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
-                    b.Property<int>("HotelsHotelId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("UsersUserId")
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RoleId")
                         .HasColumnType("int");
 
-                    b.HasKey("HotelsHotelId", "UsersUserId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("UsersUserId");
+                    b.HasIndex("RoleId");
 
-                    b.ToTable("HotelUser");
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("MyRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("MyUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastLoginDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<int>("MyUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("RecordDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("StatusId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<int?>("UserTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.HasIndex("StatusId");
+
+                    b.HasIndex("UserTypeId");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("MyUserRestaurant", b =>
+                {
+                    b.Property<int>("RestaurantsRestaurantId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsersId")
+                        .HasColumnType("int");
+
+                    b.HasKey("RestaurantsRestaurantId", "UsersId");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("MyUserRestaurant");
                 });
 
             modelBuilder.Entity("NotificationLog", b =>
@@ -1073,21 +1311,6 @@ namespace HotelProject.Data.Migrations
                     b.ToTable("RestaurantType");
                 });
 
-            modelBuilder.Entity("RestaurantUser", b =>
-                {
-                    b.Property<int>("RestaurantsRestaurantId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UsersUserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("RestaurantsRestaurantId", "UsersUserId");
-
-                    b.HasIndex("UsersUserId");
-
-                    b.ToTable("RestaurantUser");
-                });
-
             modelBuilder.Entity("Review", b =>
                 {
                     b.Property<int>("ReviewId")
@@ -1130,7 +1353,7 @@ namespace HotelProject.Data.Migrations
 
                     b.HasKey("StatusId");
 
-                    b.ToTable("Status");
+                    b.ToTable("Statuses");
                 });
 
             modelBuilder.Entity("Transfer", b =>
@@ -1190,47 +1413,6 @@ namespace HotelProject.Data.Migrations
                     b.HasKey("TransferStatusId");
 
                     b.ToTable("TransferStatus");
-                });
-
-            modelBuilder.Entity("User", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("LastLoginDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("RecordDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("StatusId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UserTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Username")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserId");
-
-                    b.HasIndex("StatusId");
-
-                    b.HasIndex("UserTypeId");
-
-                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("UserEmail", b =>
@@ -1342,9 +1524,9 @@ namespace HotelProject.Data.Migrations
 
             modelBuilder.Entity("DriverAssignment", b =>
                 {
-                    b.HasOne("User", "DeliveryUser")
+                    b.HasOne("MyUser", "DeliveryUser")
                         .WithMany("DriverAssignments")
-                        .HasForeignKey("DeliveryUserUserId");
+                        .HasForeignKey("DeliveryUserId");
 
                     b.HasOne("Order", "Order")
                         .WithMany()
@@ -1378,7 +1560,7 @@ namespace HotelProject.Data.Migrations
                         .WithMany()
                         .HasForeignKey("RestaurantId");
 
-                    b.HasOne("User", "User")
+                    b.HasOne("MyUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
 
@@ -1475,6 +1657,21 @@ namespace HotelProject.Data.Migrations
                     b.Navigation("Status");
                 });
 
+            modelBuilder.Entity("HotelMyUser", b =>
+                {
+                    b.HasOne("Hotel", null)
+                        .WithMany()
+                        .HasForeignKey("HotelsHotelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyUser", null)
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("HotelPhoneNumber", b =>
                 {
                     b.HasOne("Hotel", "Hotel")
@@ -1514,17 +1711,83 @@ namespace HotelProject.Data.Migrations
                     b.Navigation("Hotel");
                 });
 
-            modelBuilder.Entity("HotelUser", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
-                    b.HasOne("Hotel", null)
+                    b.HasOne("MyRole", null)
                         .WithMany()
-                        .HasForeignKey("HotelsHotelId")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
+                {
+                    b.HasOne("MyUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
+                {
+                    b.HasOne("MyUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
+                {
+                    b.HasOne("MyRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("User", null)
+                    b.HasOne("MyUser", null)
                         .WithMany()
-                        .HasForeignKey("UsersUserId")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
+                {
+                    b.HasOne("MyUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MyUser", b =>
+                {
+                    b.HasOne("Status", "Status")
+                        .WithMany()
+                        .HasForeignKey("StatusId");
+
+                    b.HasOne("UserType", "UserType")
+                        .WithMany()
+                        .HasForeignKey("UserTypeId");
+
+                    b.Navigation("Status");
+
+                    b.Navigation("UserType");
+                });
+
+            modelBuilder.Entity("MyUserRestaurant", b =>
+                {
+                    b.HasOne("Restaurant", null)
+                        .WithMany()
+                        .HasForeignKey("RestaurantsRestaurantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyUser", null)
+                        .WithMany()
+                        .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -1543,7 +1806,7 @@ namespace HotelProject.Data.Migrations
                         .WithMany()
                         .HasForeignKey("RestaurantId");
 
-                    b.HasOne("User", "User")
+                    b.HasOne("MyUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
 
@@ -1789,21 +2052,6 @@ namespace HotelProject.Data.Migrations
                     b.Navigation("Restaurant");
                 });
 
-            modelBuilder.Entity("RestaurantUser", b =>
-                {
-                    b.HasOne("Restaurant", null)
-                        .WithMany()
-                        .HasForeignKey("RestaurantsRestaurantId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("User", null)
-                        .WithMany()
-                        .HasForeignKey("UsersUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Review", b =>
                 {
                     b.HasOne("Order", "Order")
@@ -1840,28 +2088,13 @@ namespace HotelProject.Data.Migrations
                     b.Navigation("Status");
                 });
 
-            modelBuilder.Entity("User", b =>
-                {
-                    b.HasOne("Status", "Status")
-                        .WithMany()
-                        .HasForeignKey("StatusId");
-
-                    b.HasOne("UserType", "UserType")
-                        .WithMany()
-                        .HasForeignKey("UserTypeId");
-
-                    b.Navigation("Status");
-
-                    b.Navigation("UserType");
-                });
-
             modelBuilder.Entity("UserEmail", b =>
                 {
                     b.HasOne("Email", "Email")
                         .WithMany("UserEmails")
                         .HasForeignKey("EmailId");
 
-                    b.HasOne("User", "User")
+                    b.HasOne("MyUser", "User")
                         .WithMany("UserEmails")
                         .HasForeignKey("UserId");
 
@@ -1876,7 +2109,7 @@ namespace HotelProject.Data.Migrations
                         .WithMany("UserPhoneNumbers")
                         .HasForeignKey("PhoneNumberId");
 
-                    b.HasOne("User", "User")
+                    b.HasOne("MyUser", "User")
                         .WithMany("UserPhoneNumbers")
                         .HasForeignKey("UserId");
 
@@ -1916,6 +2149,15 @@ namespace HotelProject.Data.Migrations
             modelBuilder.Entity("HotelMenu", b =>
                 {
                     b.Navigation("MenuProducts");
+                });
+
+            modelBuilder.Entity("MyUser", b =>
+                {
+                    b.Navigation("DriverAssignments");
+
+                    b.Navigation("UserEmails");
+
+                    b.Navigation("UserPhoneNumbers");
                 });
 
             modelBuilder.Entity("Order", b =>
@@ -1968,15 +2210,6 @@ namespace HotelProject.Data.Migrations
                     b.Navigation("RestaurantPhoneNumbers");
 
                     b.Navigation("RestaurantProducts");
-                });
-
-            modelBuilder.Entity("User", b =>
-                {
-                    b.Navigation("DriverAssignments");
-
-                    b.Navigation("UserEmails");
-
-                    b.Navigation("UserPhoneNumbers");
                 });
 #pragma warning restore 612, 618
         }

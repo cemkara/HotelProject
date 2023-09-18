@@ -1,4 +1,5 @@
-﻿@{
+﻿@model HotelViewModel
+@{
     ViewData["Title"] = "New";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -9,77 +10,59 @@
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0">New Hotel</h5>
                 @*<small class="text-muted float-end">Default label</small>*@
-                <div class="form-check form-switch mb-2 float-end">
+                @*<div class="form-check form-switch mb-2 float-end">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked />
                     <label class="form-check-label" for="flexSwitchCheckChecked">Is Active?</label>
-                </div>
+                    </div>*@
             </div>
             <div class="card-body">
-                <form>
+                @using (Html.BeginForm("New", "Hotel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
                     <div class="mb-3">
-                        <label class="form-label" for="basic-default-fullname">Hotel Name</label>
-                        <input type="text" class="form-control" id="basic-default-fullname" placeholder="Hotel Name" />
+                        @Html.LabelFor(model => model.Name, new{@class="form-label"})
+                        @Html.TextBoxFor(model => model.Name, new { placeholder = "Hotel Name", @class = "form-control", })
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="basic-default-company">Related User</label>
-                        <select class="form-select form-control">
-                            <option selected>Select related user</option>
-                            <option value="1">Cem</option>
-                            <option value="2">Gizem</option>
-                            <option value="3">Mert</option>
-                            <option value="4">Joe</option>
-                            <option value="5">Doe</option>
-                        </select>
+                        <div class="form-group">
+                            @Html.Label("Related User")
+                            @Html.DropDownListFor(x=>x.SelectedUserId,(List<SelectListItem>)ViewBag.Users,new {@class = "form-control"})
+                        </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="basic-default-email">Email</label>
+                        @Html.Label("Email");
                         <div class="input-group input-group-merge">
-                            <input type="text"
-                                   id="basic-default-email"
-                                   class="form-control"
-                                   placeholder="info@Hotel.com"
-                                   aria-label="info@Hotel.com" />
+                            @Html.TextBoxFor(model => model.Email, new { placeholder = "Email address", @class = "form-control", })
+
                         </div>
                         <div class="form-text">You can use letters, numbers & periods</div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="basic-default-phone">Phone No</label>
-                        <input type="text"
-                               id="basic-default-phone"
-                               class="form-control phone-mask"
-                               placeholder="658 799 8941" />
+                        @Html.Label("Phone");
+                        @Html.TextBoxFor(model => model.Phone, new { placeholder = "Phone", @class = "form-control", })
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-group">
+                            @Html.Label("District")
+                            @Html.DropDownListFor(x=>x.SelectedDistrictId,(List<SelectListItem>)ViewBag.Districts,"Select District",new {@class = "form-control"})
+                        </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="basic-default-company">City</label>
-                        <select class="form-select form-control">
-                            <option selected>Select City</option>
-                            <option value="1">Istanbul</option>
-                            <option value="2">Antalya</option>
-                            <option value="3">Izmir</option>
-                            <option value="4">Ankara</option>
-                            <option value="5">Mugla</option>
-                        </select>
+                        @Html.Label("Address");
+                        @Html.TextBoxFor(model => model.AddressText, new { placeholder = "Address", @class = "form-control", })
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="basic-default-company">District</label>
-                        <select class="form-select form-control">
-                            <option selected>Select District</option>
-                            <option value="1">Beyoğlu</option>
-                            <option value="2">Şişli</option>
-                            <option value="3">Beşiktaş</option>
-                            <option value="4">Kadıköy</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="basic-default-message">Address</label>
-                        <textarea id="basic-default-message" class="form-control" placeholder="Hotel address.."></textarea>
+                        <div class="form-group">
+                            @Html.Label("Status")
+                            @Html.DropDownListFor(x=>x.SelectedStatusId,(List<SelectListItem>)ViewBag.Statuses,"Select Status",new {@class = "form-control"})
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Hotel Logo</label>
-                        <input class="form-control" type="file" id="formFile" />
+                        <input class="form-control" name="hotelLogo" type="file" id="hotelLogo" />
                     </div>
                     <button type="submit" class="btn btn-primary">Save</button>
-                </form>
+                }
             </div>
         </div>
     </div>

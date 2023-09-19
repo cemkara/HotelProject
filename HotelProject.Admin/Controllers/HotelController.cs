@@ -8,61 +8,33 @@ namespace HotelProject.Admin.Controllers
     public class HotelController : Controller
     {
         private readonly Context db = new Context();
-        private readonly UserManager<MyUser> userManager;
 
-        public HotelController(UserManager<MyUser> _userManager)
-        {
-            userManager = _userManager;
-        }
         public IActionResult Index()
         {
             return View();
         }
         public IActionResult New()
         {
-            List<SelectListItem> users = (from x in db.Users.Where(x => x.StatusId == 1 && x.UserTypeId == 2).ToList()
-                                          select new SelectListItem
-                                          {
-                                              Text = x.Name,
-                                              Value = x.Id.ToString()
-                                          }).ToList();
-
-            List<SelectListItem> districts = (from x in db.Districts.ToList()
-                                              select new SelectListItem
-                                              {
-                                                  Text = x.DistrictName,
-                                                  Value = x.DistrictId.ToString()
-                                              }).ToList();
-
-            List<SelectListItem> statuses = (from x in db.Statuses.ToList()
-                                             select new SelectListItem
-                                             {
-                                                 Text = x.Name,
-                                                 Value = x.StatusId.ToString()
-                                             }).ToList();
-
-            ViewBag.Users = users;
-            ViewBag.Districts = districts;
-            ViewBag.Statuses = statuses;
-
+            CreateSelectListItem();
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> New(IFormFile hotelLogo, HotelViewModel hotel)
+        public async Task<IActionResult> New(IFormFile LogoUrl, HotelViewModel hotel)
         {
-            if (true)
+            if (ModelState.IsValid)
             {
                 string fileName, filePath;
 
-                if (hotelLogo != null && hotelLogo.Length > 0)
+                if (LogoUrl != null && LogoUrl.Length > 0)
                 {
-                    fileName = hotel.Name + " Logo -" + Guid.NewGuid() + Path.GetExtension(hotelLogo.FileName);
+
+                    fileName = hotel.Name + " Logo -" + Guid.NewGuid() + Path.GetExtension(LogoUrl.FileName);
                     filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/hotels",
                         fileName);
 
                     using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {
-                        hotelLogo.CopyTo(fileStream);
+                        LogoUrl.CopyTo(fileStream);
                     }
                 }
                 else
@@ -97,6 +69,7 @@ namespace HotelProject.Admin.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
+            CreateSelectListItem();
             return View(hotel);
         }
         public IActionResult Details(string code)
@@ -157,5 +130,33 @@ namespace HotelProject.Admin.Controllers
             return View();
         }
 
+        //funtions
+        public void CreateSelectListItem()
+        {
+            List<SelectListItem> users = (from x in db.Users.Where(x => x.StatusId == 1 && x.UserTypeId == 2).ToList()
+                                          select new SelectListItem
+                                          {
+                                              Text = x.Name,
+                                              Value = x.Id.ToString()
+                                          }).ToList();
+
+            List<SelectListItem> districts = (from x in db.Districts.ToList()
+                                              select new SelectListItem
+                                              {
+                                                  Text = x.DistrictName,
+                                                  Value = x.DistrictId.ToString()
+                                              }).ToList();
+
+            List<SelectListItem> statuses = (from x in db.Statuses.ToList()
+                                             select new SelectListItem
+                                             {
+                                                 Text = x.Name,
+                                                 Value = x.StatusId.ToString()
+                                             }).ToList();
+
+            ViewBag.Users = users;
+            ViewBag.Districts = districts;
+            ViewBag.Statuses = statuses;
+        }
     }
 }

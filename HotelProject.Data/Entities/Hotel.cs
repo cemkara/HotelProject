@@ -1,10 +1,17 @@
+using System.ComponentModel.DataAnnotations;
+
 public class Hotel
 {
+    [Key]
     public int HotelId { get; set; }
+
+    [Required(ErrorMessage = "This field cannot be left blank.")]
     public string Name { get; set; }
     public Address Address { get; set; }
     public Status Status { get; set; }
-    public string LogoUrl { get; set; }
+
+    [Required(ErrorMessage = "This field cannot be left blank.")]
+    public string LogoUrl { get; set; } = "unknow.png";
     public DateTime RecordDate { get; set; }
 
     public ICollection<HotelRoom> HotelRoom { get; set; }

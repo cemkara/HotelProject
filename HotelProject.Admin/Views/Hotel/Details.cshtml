@@ -1,6 +1,70 @@
-﻿@{
+﻿@model HotelViewModel
+@{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Hotel Details</h1>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <h5 class="card-header">@Model.Name Details</h5>
+            <!-- Account -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="d-flex align-items-start align-items-sm-center gap-4">
+                            <img src="/images/hotels/@Model.LogoUrl"
+                                 alt="user-avatar"
+                                 class="d-block rounded"
+                                 height="100"
+                                 width="100"
+                                 id="uploadedAvatar" />
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="button-wrapper">
+                            <a href="/Hotel/Update/@Context.GetRouteValue("id")" class="btn bt btn-outline-secondary account-image-reset mb-4">
+                                <span class="d-none d-sm-block">Update</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-0" />
+            <div class="card-body">
+                <div class="row">
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">Name</label>
+                        <span class="form-control">@Model.Name</span>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">Related User</label>
+                        <span class="form-control">@Model.UserName</span>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">Email</label>
+                        <span class="form-control">@Model.Email</span>
+
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">Phone</label>
+                        <span class="form-control">@Model.Phone</span>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">District</label>
+                        <span class="form-control">@Model.DistrictName</span>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">Address</label>
+                        <span class="form-control">@Model.AddressText</span>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">Status</label>
+                        <span class="form-control">@Model.StatusName</span>
+                    </div>
+                </div>
+            </div>
+            <!-- /Account -->
+        </div>
+    </div>
+</div>

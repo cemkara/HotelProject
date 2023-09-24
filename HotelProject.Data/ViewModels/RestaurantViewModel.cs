@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-public class HotelViewModel : Hotel
+public class RestaurantViewModel : Restaurant
 {
     [Required(ErrorMessage = "This field cannot be left blank.")]
     public int SelectedUserId { get; set; }
@@ -14,6 +14,9 @@ public class HotelViewModel : Hotel
     public int SelectedDistrictId { get; set; }
     [Required(ErrorMessage = "This field cannot be left blank.")]
     public int SelectedStatusId { get; set; }
+
+    [Required(ErrorMessage = "This field cannot be left blank.")]
+    public int SelectedTypeId { get; set; }
 
     [Required(ErrorMessage = "This field cannot be left blank.")]
     [EmailAddress(ErrorMessage = "Invalid email address")]

@@ -15,4 +15,11 @@ public class Restaurant
     public ICollection<HotelRestaurant> HotelRestaurants { get; set; }
     public ICollection<RestaurantCommission> RestaurantCommissions { get; set; }
     public ICollection<MyUser> Users { get; set; }
+
+    public Restaurant()
+    {
+        Users = new List<MyUser>();
+        RestaurantEmails = new List<RestaurantEmail>();
+        RestaurantPhoneNumbers = new List<RestaurantPhoneNumber>();
+    }
 }

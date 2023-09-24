@@ -38,6 +38,7 @@ namespace HotelProject.Data
         public DbSet<RestaurantEmail> RestaurantEmails { get; set; }
         public DbSet<RestaurantPhoneNumber> RestaurantPhoneNumbers { get; set; }
         public DbSet<RestaurantProduct> RestaurantProducts { get; set; }
+        public DbSet<RestaurantType> RestaurantTypes { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Transfer> Transfers { get; set; }
         public DbSet<UserEmail> UserEmails { get; set; }

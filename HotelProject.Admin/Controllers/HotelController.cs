@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using X.PagedList;
 
 namespace HotelProject.Admin.Controllers
 {
@@ -9,9 +11,22 @@ namespace HotelProject.Admin.Controllers
     {
         private readonly Context db = new Context();
 
-        public IActionResult Index()
+        public IActionResult Index(int page = 1, string search = "", int status = 0)
         {
-            return View();
+            var query = db.Hotels.Include(x => x.Status).Include(x => x.Users).ToList();
+
+            if (status != 0)
+            {
+                query = query.Where(x => x.Status.StatusId == status).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                query = query.Where(x => x.Name.ToLower().Contains(search.ToLower())).ToList();
+            }
+
+            var list = query.OrderBy(x => x.Status.StatusId).ThenByDescending(x => x.RecordDate).ToPagedList(page, 20);
+            return View(list);
         }
         public IActionResult New()
         {
@@ -72,18 +87,119 @@ namespace HotelProject.Admin.Controllers
             CreateSelectListItem();
             return View(hotel);
         }
-        public IActionResult Details(string code)
+        public IActionResult Details(int id)
         {
-            return View(code);
+            var hotel = db.Hotels
+                        .Include(x => x.Address)
+                            .ThenInclude(x => x.District)
+                        .Include(x => x.Status)
+                        .Include(x => x.HotelEmails)
+                            .ThenInclude(e => e.Email)
+                        .Include(x => x.HotelPhoneNumbers)
+                            .ThenInclude(p => p.PhoneNumber)
+                        .Include(x => x.Users)
+                        .FirstOrDefault(x => x.HotelId == id);
+            if (hotel == null)
+            {
+                return NotFound();
+            }
+
+            HotelViewModel model = new HotelViewModel();
+            model.SelectedStatusId = hotel.Status.StatusId;
+            model.Email = hotel.HotelEmails.FirstOrDefault().Email.Mail;
+            model.Phone = hotel.HotelPhoneNumbers.FirstOrDefault().PhoneNumber.Number;
+            model.AddressText = hotel.Address.Street;
+            model.SelectedDistrictId = hotel.Address.District.DistrictId;
+            model.Name = hotel.Name;
+            model.LogoUrl = hotel.LogoUrl;
+            model.SelectedUserId = hotel.Users.FirstOrDefault().Id;
+            model.UserName = hotel.Users.FirstOrDefault().Name;
+            model.DistrictName = hotel.Address.District.DistrictName;
+            model.StatusName = hotel.Status.Name;
+            return View(model);
         }
-        public IActionResult Update()
+        public IActionResult Update(int id)
         {
-            return View();
+            var hotel = db.Hotels
+                        .Include(x => x.Address)
+                            .ThenInclude(x => x.District)
+                        .Include(x => x.Status)
+                        .Include(x => x.HotelEmails)
+                            .ThenInclude(e => e.Email)
+                        .Include(x => x.HotelPhoneNumbers)
+                            .ThenInclude(p => p.PhoneNumber)
+                        .Include(x => x.Users)
+                        .FirstOrDefault(x => x.HotelId == id);
+            if (hotel == null)
+            {
+                return NotFound();
+            }
+
+            HotelViewModel model = new HotelViewModel();
+            model.SelectedStatusId = hotel.Status.StatusId;
+            model.Email = hotel.HotelEmails.FirstOrDefault().Email.Mail;
+            model.Phone = hotel.HotelPhoneNumbers.FirstOrDefault().PhoneNumber.Number;
+            model.AddressText = hotel.Address.Street;
+            model.SelectedDistrictId = hotel.Address.District.DistrictId;
+            model.Name = hotel.Name;
+            model.LogoUrl = hotel.LogoUrl;
+            model.SelectedUserId = hotel.Users.FirstOrDefault().Id;
+            CreateSelectListItem();
+
+            return View(model);
         }
         [HttpPost]
-        public IActionResult Update(Hotel hotel)
+        public async Task<IActionResult> Update(int id, HotelViewModel hotel)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                var existingHotel = db.Hotels.Include(x => x.Address)
+                                        .Include(x => x.Status)
+                                        .Include(x => x.HotelEmails)
+                                            .ThenInclude(e => e.Email)
+                                        .Include(x => x.HotelPhoneNumbers)
+                                            .ThenInclude(p => p.PhoneNumber)
+                                        .Include(x => x.Users)
+                                        .FirstOrDefault(x => x.HotelId == id);
+                if (existingHotel == null)
+                {
+                    return NotFound();
+                }
+
+                Address existAddress = db.Addresses.Include(x => x.District).Where(x => x.AddressId == existingHotel.Address.AddressId).FirstOrDefault();
+                existAddress.District = db.Districts.Find(hotel.SelectedDistrictId);
+                existAddress.Street = hotel.AddressText;
+                db.Update(existAddress);
+
+                existingHotel.Status = db.Statuses.Find(hotel.SelectedStatusId);
+
+                HotelEmail hotelEmail = existingHotel.HotelEmails.FirstOrDefault();
+                hotelEmail.Email.Mail = hotel.Email;
+                db.Update(hotelEmail);
+
+
+                HotelPhoneNumber hotelPhone = existingHotel.HotelPhoneNumbers.FirstOrDefault();
+                hotelPhone.PhoneNumber.Number = hotel.Phone;
+                db.Update(hotelPhone);
+
+                existingHotel.Name = hotel.Name;
+
+                var user = db.Users.Find(hotel.SelectedUserId);
+                var existUser = existingHotel.Users.FirstOrDefault();
+                if (existUser.Id != hotel.SelectedUserId)
+                {
+                    existingHotel.Users.Remove(existUser);
+                    existingHotel.Users.Add(user);
+                }
+
+                db.Update(existingHotel);
+                db.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+
+            CreateSelectListItem();
+
+            return View(hotel);
         }
 
         public IActionResult Menu(string code)
@@ -129,7 +245,22 @@ namespace HotelProject.Admin.Controllers
         {
             return View();
         }
+        public IActionResult StatusChange(int id)
+        {
+            var hotel = db.Hotels.Include(x => x.Status).Where(x => x.HotelId == id).FirstOrDefault();
+            if (hotel.Status.StatusId == 1)
+            {
+                hotel.Status = db.Statuses.Find(2);
+            }
+            else
+            {
+                hotel.Status = db.Statuses.Find(1);
+            }
+            db.Update(hotel);
+            db.SaveChanges();
+            return RedirectToAction("Index");
 
+        }
         //funtions
         public void CreateSelectListItem()
         {
